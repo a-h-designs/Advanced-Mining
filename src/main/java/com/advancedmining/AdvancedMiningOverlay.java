@@ -46,6 +46,10 @@ class AdvancedMiningOverlay extends OverlayPanel
         MiningSession session = plugin.getSession();
 
         int mineralsFound = session.getMineralsFound();
+        int sapphiresFound = session.getSapphiresFound();
+        int emeraldsFound = session.getEmeraldsFound();
+        int rubiesFound = session.getRubiesFound();
+        int diamondsFound = session.getDiamondsFound();
         int ironFound = session.getIronFound();
         int coalFound = session.getCoalFound();
         int goldFound = session.getGoldFound();
@@ -53,7 +57,8 @@ class AdvancedMiningOverlay extends OverlayPanel
         int adamantiteFound = session.getAdamantiteFound();
         int runiteFound = session.getRuniteFound();
 
-        if (mineralsFound == 0 && ironFound == 0 && coalFound == 0 && goldFound == 0 && mithrilFound == 0
+        if (mineralsFound == 0 && sapphiresFound == 0 && emeraldsFound == 0 && rubiesFound == 0 &&
+                diamondsFound == 0 && ironFound == 0 && coalFound == 0 && goldFound == 0 && mithrilFound == 0
                 && adamantiteFound == 0 && runiteFound == 0)
         {
             return null;
@@ -103,6 +108,34 @@ class AdvancedMiningOverlay extends OverlayPanel
             panelComponent.getChildren().add(LineComponent.builder()
                     .left("Minerals:")
                     .right(Integer.toString(mineralsFound))
+                    .build());
+        }
+        if (sapphiresFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Sapphires:")
+                    .right(Integer.toString(sapphiresFound))
+                    .build());
+        }
+        if (emeraldsFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Emeralds:")
+                    .right(Integer.toString(emeraldsFound))
+                    .build());
+        }
+        if (rubiesFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Rubies:")
+                    .right(Integer.toString(rubiesFound))
+                    .build());
+        }
+        if (diamondsFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Diamonds:")
+                    .right(Integer.toString(diamondsFound))
                     .build());
         }
         if (ironFound > 0)

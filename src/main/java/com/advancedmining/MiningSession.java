@@ -48,6 +48,18 @@ class MiningSession
     {
         switch (item)
         {
+            case ItemID.UNCUT_SAPPHIRE:
+                sapphiresFound += count;
+                break;
+            case ItemID.UNCUT_EMERALD:
+                emeraldsFound += count;
+                break;
+            case ItemID.UNCUT_RUBY:
+                rubiesFound += count;
+                break;
+            case ItemID.UNCUT_DIAMOND:
+                diamondsFound += count;
+                break;
             case ItemID.UNIDENTIFIED_MINERALS:
                 mineralsFound += count;
                 break;

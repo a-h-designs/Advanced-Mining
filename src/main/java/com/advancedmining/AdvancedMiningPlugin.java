@@ -58,10 +58,10 @@ public class AdvancedMiningPlugin extends Plugin
 {
 	public static final Pattern MINING_PATTERN = Pattern.compile(
 			"You " +
-					"(?:manage to|just)" +
-					" (?:mined?|quarry) " +
-					"(?:some|an?) " +
-					"(?:copper|tin|clay|iron|silver|coal|gold|mithril|adamantite|runeite|amethyst|sandstone|granite|barronite shards|barronite deposit|Opal|piece of Jade|Red Topaz|Emerald|Sapphire|Ruby|Diamond)" +
+					"(?:manage to|just|find)" +
+					" (?:mined?|quarry|some) " +
+					"(?:some|an?|minerals) " +
+					"(?:while you mine|copper|tin|clay|iron|silver|coal|gold|mithril|adamantite|runite|amethyst|sandstone|granite|barronite shards|barronite deposit|Opal|piece of Jade|Red Topaz|Emerald|Sapphire|Ruby|Diamond)" +
 					"(?:\\.|!)");
 
 	@Inject
@@ -349,52 +349,42 @@ public class AdvancedMiningPlugin extends Plugin
 
 				session.setLastMined();
 
-				if (chatMessage.contains("minerals"))
-				{
-					session.updateOreFound(ItemID.UNIDENTIFIED_MINERALS, +1);
-				}
-				if (chatMessage.contains("iron"))
-				{
-					session.updateOreFound(ItemID.IRON_ORE, +1);
-				}
-				if (chatMessage.contains("coal"))
-				{
-					session.updateOreFound(ItemID.COAL, +1);
-				}
-				if (chatMessage.contains("gold"))
-				{
-					session.updateOreFound(ItemID.GOLD_ORE, +1);
-				}
-				if (chatMessage.contains("mithril"))
-				{
-					session.updateOreFound(ItemID.MITHRIL_ORE, +1);
-				}
-				if (chatMessage.contains("adamantite"))
-				{
-					session.updateOreFound(ItemID.ADAMANTITE_ORE, +1);
-				}
-				if (chatMessage.contains("runite"))
-				{
-					session.updateOreFound(ItemID.RUNITE_ORE, +1);
-				}
-
-				/*switch (chatMessage)
+				switch (chatMessage)
 			{
 				case "You find some minerals while you mine.":
 					session.updateOreFound(ItemID.UNIDENTIFIED_MINERALS, +1);
+					break;
+				case "You just found a Sapphire!":
+					session.updateOreFound(ItemID.UNCUT_SAPPHIRE, +1);
+					break;
+				case "You just found an Emerald!":
+					session.updateOreFound(ItemID.UNCUT_EMERALD, +1);
+					break;
+				case "You just found a Ruby!":
+					session.updateOreFound(ItemID.UNCUT_RUBY, +1);
+					break;
+				case "You just found a Diamond!":
+					session.updateOreFound(ItemID.UNCUT_DIAMOND, +1);
+					break;
 				case "You manage to mine some iron.":
 					session.updateOreFound(ItemID.IRON_ORE, +1);
+					break;
 				case "You manage to mine some coal.":
 					session.updateOreFound(ItemID.COAL, +1);
+					break;
 				case "You manage to mine some gold.":
 					session.updateOreFound(ItemID.GOLD_ORE, +1);
+					break;
 				case "You manage to mine some mithril.":
 					session.updateOreFound(ItemID.MITHRIL_ORE, +1);
+					break;
 				case "You manage to mine some adamantite.":
 					session.updateOreFound(ItemID.ADAMANTITE_ORE, +1);
+					break;
 				case "You manage to mine some runite.":
 					session.updateOreFound(ItemID.RUNITE_ORE, +1);
-			}*/
+					break;
+			}
 			}
 		}
 	}
