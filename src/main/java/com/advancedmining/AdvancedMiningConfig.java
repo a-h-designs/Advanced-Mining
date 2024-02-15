@@ -3,17 +3,29 @@ package com.advancedmining;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
+import net.runelite.client.config.Units;
 
 @ConfigGroup("advancedmining")
 public interface AdvancedMiningConfig extends Config
 {
 	@ConfigItem(
-		keyName = "greeting",
-		name = "Welcome Greeting",
-		description = "The message to show to the user when they login"
+			keyName = "statTimeout",
+			name = "Reset stats",
+			description = "Duration the mining indicator and session stats are displayed before being reset"
 	)
-	default String greeting()
+	@Units(Units.MINUTES)
+	default int statTimeout()
 	{
-		return "Hello";
+		return 5;
+	}
+
+	@ConfigItem(
+			keyName = "showMiningStats",
+			name = "Show session stats",
+			description = "Configures whether to display mining session stats"
+	)
+	default boolean showMiningStats()
+	{
+		return true;
 	}
 }
