@@ -12,6 +12,7 @@ import net.runelite.client.plugins.xptracker.XpTrackerService;
 import static net.runelite.client.ui.overlay.OverlayManager.OPTION_CONFIGURE;
 import net.runelite.client.ui.overlay.OverlayPanel;
 import net.runelite.client.ui.overlay.OverlayPosition;
+import net.runelite.client.ui.overlay.components.ComponentOrientation;
 import net.runelite.client.ui.overlay.components.ImageComponent;
 import net.runelite.client.ui.overlay.components.LineComponent;
 import net.runelite.client.ui.overlay.components.TitleComponent;
@@ -46,20 +47,26 @@ class AdvancedMiningOverlay extends OverlayPanel
         MiningSession session = plugin.getSession();
 
         int mineralsFound = session.getMineralsFound();
+        int opalsFound = session.getOpalsFound();
+        int jadesFound = session.getJadesFound();
+        int topazsFound = session.getTopazsFound();
         int sapphiresFound = session.getSapphiresFound();
         int emeraldsFound = session.getEmeraldsFound();
         int rubiesFound = session.getRubiesFound();
         int diamondsFound = session.getDiamondsFound();
         int ironFound = session.getIronFound();
+        int silverFound = session.getSilverFound();
         int coalFound = session.getCoalFound();
         int goldFound = session.getGoldFound();
         int mithrilFound = session.getMithrilFound();
         int adamantiteFound = session.getAdamantiteFound();
         int runiteFound = session.getRuniteFound();
+        int amethystFound = session.getAmethystFound();
 
-        if (mineralsFound == 0 && sapphiresFound == 0 && emeraldsFound == 0 && rubiesFound == 0 &&
-                diamondsFound == 0 && ironFound == 0 && coalFound == 0 && goldFound == 0 && mithrilFound == 0
-                && adamantiteFound == 0 && runiteFound == 0)
+        if (mineralsFound == 0 && opalsFound == 0 && jadesFound == 0 && topazsFound == 0 && sapphiresFound == 0 &&
+                emeraldsFound == 0 && rubiesFound == 0 && diamondsFound == 0 && ironFound == 0 && silverFound == 0 &&
+                coalFound == 0 && goldFound == 0 && mithrilFound == 0 && adamantiteFound == 0 && runiteFound == 0 &&
+                amethystFound == 0)
         {
             return null;
         }
@@ -102,7 +109,6 @@ class AdvancedMiningOverlay extends OverlayPanel
             }
 
         }
-
         if (mineralsFound > 0)
         {
             panelComponent.getChildren().add(LineComponent.builder()
@@ -110,32 +116,12 @@ class AdvancedMiningOverlay extends OverlayPanel
                     .right(Integer.toString(mineralsFound))
                     .build());
         }
-        if (sapphiresFound > 0)
+        if (ironFound > 0 || silverFound > 0 || coalFound > 0 || goldFound > 0 || mithrilFound > 0 ||
+                adamantiteFound > 0 || runiteFound > 0 || amethystFound > 0)
         {
-            panelComponent.getChildren().add(LineComponent.builder()
-                    .left("Sapphires:")
-                    .right(Integer.toString(sapphiresFound))
-                    .build());
-        }
-        if (emeraldsFound > 0)
-        {
-            panelComponent.getChildren().add(LineComponent.builder()
-                    .left("Emeralds:")
-                    .right(Integer.toString(emeraldsFound))
-                    .build());
-        }
-        if (rubiesFound > 0)
-        {
-            panelComponent.getChildren().add(LineComponent.builder()
-                    .left("Rubies:")
-                    .right(Integer.toString(rubiesFound))
-                    .build());
-        }
-        if (diamondsFound > 0)
-        {
-            panelComponent.getChildren().add(LineComponent.builder()
-                    .left("Diamonds:")
-                    .right(Integer.toString(diamondsFound))
+            panelComponent.getChildren().add(TitleComponent.builder()
+                    .text("Ores found")
+                    .color(Color.YELLOW)
                     .build());
         }
         if (ironFound > 0)
@@ -143,6 +129,13 @@ class AdvancedMiningOverlay extends OverlayPanel
             panelComponent.getChildren().add(LineComponent.builder()
                     .left("Iron:")
                     .right(Integer.toString(ironFound))
+                    .build());
+        }
+        if (silverFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Silver:")
+                    .right(Integer.toString(silverFound))
                     .build());
         }
         if (coalFound > 0)
@@ -178,6 +171,70 @@ class AdvancedMiningOverlay extends OverlayPanel
             panelComponent.getChildren().add(LineComponent.builder()
                     .left("Runite:")
                     .right(Integer.toString(runiteFound))
+                    .build());
+        }
+        if (amethystFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Amethyst:")
+                    .right(Integer.toString(amethystFound))
+                    .build());
+        }
+        if (opalsFound > 0 || jadesFound > 0 || topazsFound > 0 ||sapphiresFound > 0 || emeraldsFound > 0 ||
+                rubiesFound > 0 || diamondsFound > 0)
+        {
+            panelComponent.getChildren().add(TitleComponent.builder()
+                    .text("Gems found")
+                    .color(Color.YELLOW)
+                    .build());
+        }
+        if (opalsFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Opals:")
+                    .right(Integer.toString(opalsFound))
+                    .build());
+        }
+        if (jadesFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Jades:")
+                    .right(Integer.toString(jadesFound))
+                    .build());
+        }
+        if (topazsFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Red Topaz:")
+                    .right(Integer.toString(topazsFound))
+                    .build());
+        }
+        if (sapphiresFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Sapphires:")
+                    .right(Integer.toString(sapphiresFound))
+                    .build());
+        }
+        if (emeraldsFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Emeralds:")
+                    .right(Integer.toString(emeraldsFound))
+                    .build());
+        }
+        if (rubiesFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Rubies:")
+                    .right(Integer.toString(rubiesFound))
+                    .build());
+        }
+        if (diamondsFound > 0)
+        {
+            panelComponent.getChildren().add(LineComponent.builder()
+                    .left("Diamonds:")
+                    .right(Integer.toString(diamondsFound))
                     .build());
         }
 
