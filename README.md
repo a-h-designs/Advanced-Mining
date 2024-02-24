@@ -2,7 +2,7 @@
 A plugin based on the original mining plugin that will display exactly what type of ores/gems you have mined & what quantity.
 
 It also displays any minerals that you have managed to collect.
-![An image showing how many ores/gems that have been collected, including any minerals.](C:\Users\antho\IdeaProjects\Advanced-Mining\src\main\java\com\advancedmining\advaned-mining.png "Advanced Mining Image")
+![An image showing how many ores/gems that have been collected, including any minerals.](advaned-mining.png "Advanced Mining Image")
 
 **Turn off the original mining plugin or it will display that and this one at the same time.**
 
