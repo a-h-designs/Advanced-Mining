@@ -59,7 +59,7 @@ public class AdvancedMiningPlugin extends Plugin
 	public static final Pattern MINING_PATTERN = Pattern.compile(
 			"You " +
 					"(?:manage to|just|find)" +
-					" (?:mined?|quarry|some) " +
+					" (?:mined?|quarry|some|found) " +
 					"(?:some|an?|minerals) " +
 					"(?:while you mine|copper|tin|clay|iron|silver|coal|gold|mithril|adamantite|runite|amethyst|sandstone|granite|barronite shards|barronite deposit|Opal|piece of Jade|Red Topaz|Emerald|Sapphire|Ruby|Diamond)" +
 					"(?:\\.|!)");

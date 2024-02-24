@@ -23,3 +23,13 @@ It also displays any minerals that you have managed to collect.
 * Emerald
 * Ruby
 * Diamond
+
+### Updates
+v1.0.2
+Fixed an error where it wasn't displaying gems found when mining.
+
+v1.0.1
+Added more ore and gems collected to the display.
+
+v1.0.0
+Initial release.

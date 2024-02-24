@@ -108,6 +108,9 @@ class AdvancedMiningOverlay extends OverlayPanel
                         .build());
             }
 
+            panelComponent.getChildren().add(TitleComponent.builder()
+                    .text("--------")
+                    .build());
         }
         if (mineralsFound > 0)
         {
