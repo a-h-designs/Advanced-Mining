@@ -16,25 +16,13 @@ class MiningSession
     private int mineralsFound;
 
     @Getter(AccessLevel.PACKAGE)
-    private int opalsFound;
+    private int clayFound;
 
     @Getter(AccessLevel.PACKAGE)
-    private int jadesFound;
+    private int copperFound;
 
     @Getter(AccessLevel.PACKAGE)
-    private int topazsFound;
-
-    @Getter(AccessLevel.PACKAGE)
-    private int sapphiresFound;
-
-    @Getter(AccessLevel.PACKAGE)
-    private int emeraldsFound;
-
-    @Getter(AccessLevel.PACKAGE)
-    private int rubiesFound;
-
-    @Getter(AccessLevel.PACKAGE)
-    private int diamondsFound;
+    private int tinFound;
 
     @Getter(AccessLevel.PACKAGE)
     private int ironFound;
@@ -59,6 +47,28 @@ class MiningSession
 
     @Getter(AccessLevel.PACKAGE)
     private int amethystFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int opalsFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int jadesFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int topazsFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int sapphiresFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int emeraldsFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int rubiesFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int diamondsFound;
+
     private Logger log;
 
     void updateOreFound(int item, int count)
@@ -68,26 +78,15 @@ class MiningSession
             case ItemID.UNIDENTIFIED_MINERALS:
                 mineralsFound += count;
                 break;
-            case ItemID.UNCUT_OPAL:
-                opalsFound += count;
+
+            case ItemID.CLAY:
+                clayFound += count;
                 break;
-            case ItemID.UNCUT_JADE:
-                jadesFound += count;
+            case ItemID.COPPER_ORE:
+                copperFound += count;
                 break;
-            case ItemID.UNCUT_RED_TOPAZ:
-                topazsFound += count;
-                break;
-            case ItemID.UNCUT_SAPPHIRE:
-                sapphiresFound += count;
-                break;
-            case ItemID.UNCUT_EMERALD:
-                emeraldsFound += count;
-                break;
-            case ItemID.UNCUT_RUBY:
-                rubiesFound += count;
-                break;
-            case ItemID.UNCUT_DIAMOND:
-                diamondsFound += count;
+            case ItemID.TIN_ORE:
+                tinFound += count;
                 break;
             case ItemID.IRON_ORE:
                 ironFound += count;
@@ -112,6 +111,28 @@ class MiningSession
                 break;
             case ItemID.AMETHYST:
                 amethystFound += count;
+                break;
+
+            case ItemID.UNCUT_OPAL:
+                opalsFound += count;
+                break;
+            case ItemID.UNCUT_JADE:
+                jadesFound += count;
+                break;
+            case ItemID.UNCUT_RED_TOPAZ:
+                topazsFound += count;
+                break;
+            case ItemID.UNCUT_SAPPHIRE:
+                sapphiresFound += count;
+                break;
+            case ItemID.UNCUT_EMERALD:
+                emeraldsFound += count;
+                break;
+            case ItemID.UNCUT_RUBY:
+                rubiesFound += count;
+                break;
+            case ItemID.UNCUT_DIAMOND:
+                diamondsFound += count;
                 break;
             default:
                 log.debug("Invalid ore specified. The ore count will not be updated.");

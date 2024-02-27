@@ -28,4 +28,14 @@ public interface AdvancedMiningConfig extends Config
 	{
 		return true;
 	}
+
+	@ConfigItem(
+			keyName = "showLootIcons",
+			name = "Show icons only",
+			description = "Display collected ores and gems as item images instead of any text"
+	)
+	default boolean showLootIcons()
+	{
+		return false;
+	}
 }

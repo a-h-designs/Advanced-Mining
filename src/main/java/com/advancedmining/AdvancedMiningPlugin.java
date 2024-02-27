@@ -51,7 +51,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 @PluginDescriptor(
 		name = "Advanced Mining",
 		description = "A more advanced mining plugin to display statistics and ore respawn timers",
-		tags = {"mining", "advanced", "gems", "ore", "golden", "nuggets", "minerals", "essence", "overlay", "skilling", "timers"}
+		tags = {"mining", "advanced", "gems", "ore", "minerals", "essence", "overlay", "skilling", "timers", "rock"}
 )
 @PluginDependency(XpTrackerPlugin.class)
 public class AdvancedMiningPlugin extends Plugin
@@ -350,34 +350,19 @@ public class AdvancedMiningPlugin extends Plugin
 				session.setLastMined();
 
 				switch (chatMessage)
-			{
+				{
 				case "You find some minerals while you mine.":
 					session.updateOreFound(ItemID.UNIDENTIFIED_MINERALS, +1);
 					break;
-				case "You just mined an Opal!":
-					session.updateOreFound(ItemID.UNCUT_OPAL, +1);
+
+				case "You manage to mine some clay.":
+					session.updateOreFound(ItemID.CLAY, +1);
 					break;
-				case "You just mined a piece of Jade!":
-					session.updateOreFound(ItemID.UNCUT_JADE, +1);
+				case "You manage to mine some copper.":
+					session.updateOreFound(ItemID.COPPER_ORE, +1);
 					break;
-				case "You just mined a Red Topaz!":
-					session.updateOreFound(ItemID.UNCUT_RED_TOPAZ, +1);
-					break;
-				case "You just found a Sapphire!":
-				case "You just mined a Sapphire!":
-					session.updateOreFound(ItemID.UNCUT_SAPPHIRE, +1);
-					break;
-				case "You just found an Emerald!":
-				case "You just mined an Emerald!":
-					session.updateOreFound(ItemID.UNCUT_EMERALD, +1);
-					break;
-				case "You just found a Ruby!":
-				case "You just mined a Ruby!":
-					session.updateOreFound(ItemID.UNCUT_RUBY, +1);
-					break;
-				case "You just found a Diamond!":
-				case "You just mined a Diamond!":
-					session.updateOreFound(ItemID.UNCUT_DIAMOND, +1);
+				case "You manage to mine some tin.":
+					session.updateOreFound(ItemID.TIN_ORE, +1);
 					break;
 				case "You manage to mine some iron.":
 					session.updateOreFound(ItemID.IRON_ORE, +1);
@@ -403,7 +388,33 @@ public class AdvancedMiningPlugin extends Plugin
 				case "You manage to mine some amethyst.":
 					session.updateOreFound(ItemID.AMETHYST, +1);
 					break;
-			}
+
+				case "You just mined an Opal!":
+					session.updateOreFound(ItemID.UNCUT_OPAL, +1);
+					break;
+				case "You just mined a piece of Jade!":
+					session.updateOreFound(ItemID.UNCUT_JADE, +1);
+					break;
+				case "You just mined a Red Topaz!":
+					session.updateOreFound(ItemID.UNCUT_RED_TOPAZ, +1);
+					break;
+				case "You just found a Sapphire!":
+				case "You just mined a Sapphire!":
+					session.updateOreFound(ItemID.UNCUT_SAPPHIRE, +1);
+					break;
+				case "You just found an Emerald!":
+				case "You just mined an Emerald!":
+					session.updateOreFound(ItemID.UNCUT_EMERALD, +1);
+					break;
+				case "You just found a Ruby!":
+				case "You just mined a Ruby!":
+					session.updateOreFound(ItemID.UNCUT_RUBY, +1);
+					break;
+				case "You just found a Diamond!":
+				case "You just mined a Diamond!":
+					session.updateOreFound(ItemID.UNCUT_DIAMOND, +1);
+					break;
+				}
 			}
 		}
 	}
