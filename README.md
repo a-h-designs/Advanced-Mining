@@ -1,17 +1,16 @@
 # Advanced Mining
 
 [![Total Installs](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/installs/plugin/advanced-mining)](https://runelite.net/plugin-hub/show/advanced-mining)
-
-[//]: # ([![Plugin Rank]&#40;http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/rank/plugin/advanced-mining&#41;]&#40;https://runelite.net/plugin-hub/show/advanced-mining&#41;)
+[![Plugin Rank](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/rank/plugin/advanced-mining)](https://runelite.net/plugin-hub/show/advanced-mining)
 
 A plugin based on the original mining plugin that will display exactly what type of ores/gems you have mined & what quantity.<br>
 It also displays any minerals that you have managed to collect.
 
+**Turn off the original mining plugin, or it will display both at the same time.**
+
 ![An image showing how many ores/gems that have been collected, including any minerals.](advanced-mining.png "Advanced Mining Image")<br>
 ![An image showing how many ores/gems that have been collected, including any minerals.](advanced-mining2.png "Advanced Mining Image")<br>
 ![An image showing the settings for the plugin](advanced-mining3.png "Advanced Mining Image")
-
-**Turn off the original mining plugin or it will display that and this one at the same time.**
 
 ### Ores Supported
 * Clay
@@ -35,7 +34,14 @@ It also displays any minerals that you have managed to collect.
 * Ruby
 * Diamond
 
+### Essence Supported
+* Dense Essence
+
 ### Updates
+v1.0.4<br>
+* Added support for Dense Essence (needs a better method for adding it to the display).
+* Updated the icon.
+
 v1.0.3
 * Given the option to just display the ore/gem icons instead on any text.
 * Added Clay, Copper & Tin.

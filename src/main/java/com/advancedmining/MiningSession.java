@@ -69,6 +69,18 @@ class MiningSession
     @Getter(AccessLevel.PACKAGE)
     private int diamondsFound;
 
+    @Getter(AccessLevel.PACKAGE)
+    private int runeessFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int pureessFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int denseessFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int geodebFound;
+
     private Logger log;
 
     void updateOreFound(int item, int count)
@@ -133,6 +145,18 @@ class MiningSession
                 break;
             case ItemID.UNCUT_DIAMOND:
                 diamondsFound += count;
+                break;
+            case ItemID.RUNE_ESSENCE:
+                runeessFound += count;
+                break;
+            case ItemID.PURE_ESSENCE:
+                pureessFound += count;
+                break;
+            case ItemID.DENSE_ESSENCE_BLOCK:
+                denseessFound += count;
+                break;
+            case ItemID.CLUE_GEODE_BEGINNER:
+                geodebFound += count;
                 break;
             default:
                 log.debug("Invalid ore specified. The ore count will not be updated.");

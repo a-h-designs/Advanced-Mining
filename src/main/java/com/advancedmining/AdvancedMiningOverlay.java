@@ -67,10 +67,15 @@ class AdvancedMiningOverlay extends OverlayPanel
         int rubiesFound = session.getRubiesFound();
         int diamondsFound = session.getDiamondsFound();
 
+        int runeessFound = session.getRuneessFound();
+        int pureessFound = session.getPureessFound();
+        int denseessFound = session.getDenseessFound();
+
         if (mineralsFound == 0 && clayFound == 0 && copperFound == 0 && tinFound == 0 && ironFound == 0 &&
                 silverFound == 0 && coalFound == 0 && goldFound == 0 && mithrilFound == 0 && adamantiteFound == 0 &&
                 runiteFound == 0 && amethystFound == 0 && opalsFound == 0 && jadesFound == 0 && topazsFound == 0 &&
-                sapphiresFound == 0 && emeraldsFound == 0 && rubiesFound == 0 && diamondsFound == 0)
+                sapphiresFound == 0 && emeraldsFound == 0 && rubiesFound == 0 && diamondsFound == 0 &&
+                runeessFound == 0 && pureessFound == 0 || denseessFound == 0)
         {
             return null;
         }
@@ -131,7 +136,7 @@ class AdvancedMiningOverlay extends OverlayPanel
                     goldFound > 0 || mithrilFound > 0 || adamantiteFound > 0 || runiteFound > 0 || amethystFound > 0)
             {
                 panelComponent.getChildren().add(TitleComponent.builder()
-                        .text("Ores found")
+                        .text("Ores")
                         .color(Color.YELLOW)
                         .build());
             }
@@ -216,7 +221,7 @@ class AdvancedMiningOverlay extends OverlayPanel
                     rubiesFound > 0 || diamondsFound > 0)
             {
                 panelComponent.getChildren().add(TitleComponent.builder()
-                        .text("Gems found")
+                        .text("Gems")
                         .color(Color.YELLOW)
                         .build());
             }
@@ -267,6 +272,34 @@ class AdvancedMiningOverlay extends OverlayPanel
                 panelComponent.getChildren().add(LineComponent.builder()
                         .left("Diamonds:")
                         .right(Integer.toString(diamondsFound))
+                        .build());
+            }
+            if (runeessFound > 0 || pureessFound > 0 || denseessFound > 0)
+            {
+                panelComponent.getChildren().add(TitleComponent.builder()
+                        .text("Essence")
+                        .color(Color.YELLOW)
+                        .build());
+            }
+            if (runeessFound > 0)
+            {
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Rune:")
+                        .right(Integer.toString(runeessFound))
+                        .build());
+            }
+            if (pureessFound > 0)
+            {
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Pure:")
+                        .right(Integer.toString(pureessFound))
+                        .build());
+            }
+            if (denseessFound > 0)
+            {
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Dense:")
+                        .right(Integer.toString(denseessFound))
                         .build());
             }
         }
@@ -349,6 +382,18 @@ class AdvancedMiningOverlay extends OverlayPanel
             if (diamondsFound > 0)
             {
                 panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.UNCUT_DIAMOND, diamondsFound, true)));
+            }
+            if (runeessFound > 0)
+            {
+                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.RUNE_ESSENCE, denseessFound, true)));
+            }
+            if (pureessFound > 0)
+            {
+                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.PURE_ESSENCE, denseessFound, true)));
+            }
+            if (denseessFound > 0)
+            {
+                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.DENSE_ESSENCE_BLOCK, denseessFound, true)));
             }
         }
         return super.render(graphics);
