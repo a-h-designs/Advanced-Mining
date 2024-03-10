@@ -75,8 +75,8 @@ class MiningSession
     @Getter(AccessLevel.PACKAGE)
     private int pureessFound;
 
-    @Getter(AccessLevel.PACKAGE)
-    private int denseessFound;
+    /*@Getter(AccessLevel.PACKAGE)
+    private int denseessFound;*/
 
     @Getter(AccessLevel.PACKAGE)
     private int geodebFound;
@@ -152,9 +152,9 @@ class MiningSession
             case ItemID.PURE_ESSENCE:
                 pureessFound += count;
                 break;
-            case ItemID.DENSE_ESSENCE_BLOCK:
+            /*case ItemID.DENSE_ESSENCE_BLOCK:
                 denseessFound += count;
-                break;
+                break;*/
             case ItemID.CLUE_GEODE_BEGINNER:
                 geodebFound += count;
                 break;

@@ -69,13 +69,13 @@ class AdvancedMiningOverlay extends OverlayPanel
 
         int runeessFound = session.getRuneessFound();
         int pureessFound = session.getPureessFound();
-        int denseessFound = session.getDenseessFound();
+        /*int denseessFound = session.getDenseessFound();*/
 
         if (mineralsFound == 0 && clayFound == 0 && copperFound == 0 && tinFound == 0 && ironFound == 0 &&
                 silverFound == 0 && coalFound == 0 && goldFound == 0 && mithrilFound == 0 && adamantiteFound == 0 &&
                 runiteFound == 0 && amethystFound == 0 && opalsFound == 0 && jadesFound == 0 && topazsFound == 0 &&
                 sapphiresFound == 0 && emeraldsFound == 0 && rubiesFound == 0 && diamondsFound == 0 &&
-                runeessFound == 0 && pureessFound == 0 || denseessFound == 0)
+                runeessFound == 0 && pureessFound == 0/* || denseessFound == 0*/)
         {
             return null;
         }
@@ -274,7 +274,7 @@ class AdvancedMiningOverlay extends OverlayPanel
                         .right(Integer.toString(diamondsFound))
                         .build());
             }
-            if (runeessFound > 0 || pureessFound > 0 || denseessFound > 0)
+            if (runeessFound > 0 || pureessFound > 0/* || denseessFound > 0*/)
             {
                 panelComponent.getChildren().add(TitleComponent.builder()
                         .text("Essence")
@@ -295,13 +295,13 @@ class AdvancedMiningOverlay extends OverlayPanel
                         .right(Integer.toString(pureessFound))
                         .build());
             }
-            if (denseessFound > 0)
+            /*if (denseessFound > 0)
             {
                 panelComponent.getChildren().add(LineComponent.builder()
                         .left("Dense:")
                         .right(Integer.toString(denseessFound))
                         .build());
-            }
+            }*/
         }
         else
         {
@@ -385,16 +385,16 @@ class AdvancedMiningOverlay extends OverlayPanel
             }
             if (runeessFound > 0)
             {
-                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.RUNE_ESSENCE, denseessFound, true)));
+                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.RUNE_ESSENCE, runeessFound, true)));
             }
             if (pureessFound > 0)
             {
-                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.PURE_ESSENCE, denseessFound, true)));
+                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.PURE_ESSENCE, pureessFound, true)));
             }
-            if (denseessFound > 0)
+            /*if (denseessFound > 0)
             {
                 panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.DENSE_ESSENCE_BLOCK, denseessFound, true)));
-            }
+            }*/
         }
         return super.render(graphics);
     }

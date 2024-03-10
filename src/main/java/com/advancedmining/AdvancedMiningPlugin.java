@@ -160,7 +160,7 @@ public class AdvancedMiningPlugin extends Plugin
 			if (pickaxe != null)
 			{
 				this.pickaxe = pickaxe;
-				session.updateOreFound(ItemID.DENSE_ESSENCE_BLOCK, +1);
+				//session.updateOreFound(ItemID.DENSE_ESSENCE_BLOCK, +1);
 			}
 		}
 	}
@@ -414,9 +414,9 @@ public class AdvancedMiningPlugin extends Plugin
 				case "You just mined a Diamond!":
 					session.updateOreFound(ItemID.UNCUT_DIAMOND, +1);
 					break;
-				case "You mined an extra block of essence thanks to your completion of the Kourend & Kebos Medium Diary.":
+				/*case "You mined an extra block of essence thanks to your completion of the Kourend & Kebos Medium Diary.":
 					session.updateOreFound(ItemID.DENSE_ESSENCE_BLOCK, +1);
-					break;
+					break;*/
 				}
 			}
 		}
