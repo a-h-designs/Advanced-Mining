@@ -16,6 +16,9 @@ class MiningSession
     private int mineralsFound;
 
     @Getter(AccessLevel.PACKAGE)
+    private int geodeFound;
+
+    @Getter(AccessLevel.PACKAGE)
     private int clayFound;
 
     @Getter(AccessLevel.PACKAGE)
@@ -75,11 +78,8 @@ class MiningSession
     @Getter(AccessLevel.PACKAGE)
     private int pureessFound;
 
-    /*@Getter(AccessLevel.PACKAGE)
-    private int denseessFound;*/
-
     @Getter(AccessLevel.PACKAGE)
-    private int geodebFound;
+    private int denseessFound;
 
     private Logger log;
 
@@ -89,6 +89,9 @@ class MiningSession
         {
             case ItemID.UNIDENTIFIED_MINERALS:
                 mineralsFound += count;
+                break;
+            case ItemID.CLUE_GEODE_BEGINNER:
+                geodeFound += count;
                 break;
 
             case ItemID.CLAY:
@@ -146,17 +149,15 @@ class MiningSession
             case ItemID.UNCUT_DIAMOND:
                 diamondsFound += count;
                 break;
+
             case ItemID.RUNE_ESSENCE:
                 runeessFound += count;
                 break;
             case ItemID.PURE_ESSENCE:
                 pureessFound += count;
                 break;
-            /*case ItemID.DENSE_ESSENCE_BLOCK:
+            case ItemID.DENSE_ESSENCE_BLOCK:
                 denseessFound += count;
-                break;*/
-            case ItemID.CLUE_GEODE_BEGINNER:
-                geodebFound += count;
                 break;
             default:
                 log.debug("Invalid ore specified. The ore count will not be updated.");

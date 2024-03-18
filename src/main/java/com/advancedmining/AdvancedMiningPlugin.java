@@ -13,33 +13,8 @@ import lombok.Getter;
 import lombok.Setter;
 import net.runelite.api.*;
 
-import static net.runelite.api.ObjectID.BARRONITE_ROCKS;
-import static net.runelite.api.ObjectID.BARRONITE_ROCKS_41548;
-import static net.runelite.api.ObjectID.DEPLETED_VEIN;
-import static net.runelite.api.ObjectID.DEPLETED_VEIN_26665;
-import static net.runelite.api.ObjectID.DEPLETED_VEIN_26666;
-import static net.runelite.api.ObjectID.DEPLETED_VEIN_26667;
-import static net.runelite.api.ObjectID.DEPLETED_VEIN_26668;
-import static net.runelite.api.ObjectID.EMPTY_WALL;
-import static net.runelite.api.ObjectID.GOLD_VEIN;
-import static net.runelite.api.ObjectID.GOLD_VEIN_5990;
-import static net.runelite.api.ObjectID.GOLD_VEIN_5991;
-import static net.runelite.api.ObjectID.ORE_VEIN;
-import static net.runelite.api.ObjectID.ORE_VEIN_26662;
-import static net.runelite.api.ObjectID.ORE_VEIN_26663;
-import static net.runelite.api.ObjectID.ORE_VEIN_26664;
-import static net.runelite.api.ObjectID.ROCKS_41549;
-import static net.runelite.api.ObjectID.ROCKS_41550;
-
 import net.runelite.api.coords.WorldPoint;
-import net.runelite.api.events.AnimationChanged;
-import net.runelite.api.events.ChatMessage;
-import net.runelite.api.events.GameObjectDespawned;
-import net.runelite.api.events.GameObjectSpawned;
-import net.runelite.api.events.GameStateChanged;
-import net.runelite.api.events.GameTick;
-import net.runelite.api.events.ScriptPreFired;
-import net.runelite.api.events.WallObjectSpawned;
+import net.runelite.api.events.*;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -48,20 +23,24 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.xptracker.XpTrackerPlugin;
 import net.runelite.client.ui.overlay.OverlayManager;
 
+import static net.runelite.api.ObjectID.*;
+
 @PluginDescriptor(
 		name = "Advanced Mining",
 		description = "A more advanced mining plugin to display statistics and ore respawn timers",
-		tags = {"mining", "advanced", "gems", "ore", "minerals", "essence", "overlay", "skilling", "timers", "rock"}
+		tags = {"mining", "advanced", "gems", "ore", "minerals", "essence", "overlay", "skilling", "timers", "rock", "clue", "geode"},
+		conflicts = "Mining"
 )
 @PluginDependency(XpTrackerPlugin.class)
 public class AdvancedMiningPlugin extends Plugin
 {
+	private static final int ARCEUUS_REGION = 6972;
 	public static final Pattern MINING_PATTERN = Pattern.compile(
 			"You " +
 					"(?:manage to|just|find|mined)" +
-					" (?:mined?|quarry|some|found|an) " +
-					"(?:some|an?|minerals|extra) " +
-					"(?:while you mine|copper|tin|clay|iron|silver|coal|gold|mithril|adamantite|runite|amethyst|sandstone|granite|barronite shards|barronite deposit|Opal|piece of Jade|Red Topaz|Emerald|Sapphire|Ruby|Diamond|block of essence thanks to your completion of the Kourend & Kebos Medium Diary)" +
+					" (?:mined?|quarry|some|found|an?) " +
+					"(?:some|an?|minerals|extra|clue) " +
+					"(?:while you mine|copper|tin|clay|iron|silver|coal|gold|mithril|adamantite|runite|amethyst|sandstone|granite|barronite shards|barronite deposit|Opal|piece of Jade|Red Topaz|Emerald|Sapphire|Ruby|Diamond|block of essence thanks to your completion of the Kourend & Kebos Medium Diary|geode)" +
 					"(?:\\.|!)");
 
 	@Inject
@@ -116,6 +95,16 @@ public class AdvancedMiningPlugin extends Plugin
 		respawns.clear();
 	}
 
+	private boolean isInArceuusRegion()
+	{
+		if (client.getLocalPlayer() != null)
+		{
+			return client.getLocalPlayer().getWorldLocation().getRegionID() == ARCEUUS_REGION;
+		}
+
+		return false;
+	}
+
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged event)
 	{
@@ -160,7 +149,11 @@ public class AdvancedMiningPlugin extends Plugin
 			if (pickaxe != null)
 			{
 				this.pickaxe = pickaxe;
-				//session.updateOreFound(ItemID.DENSE_ESSENCE_BLOCK, +1);
+				//Big thanks to Gamma1991 & Antimated for giving me the suggestions on how to get this to work better.
+				if (isInArceuusRegion())
+				{
+					session.updateOreFound(ItemID.DENSE_ESSENCE_BLOCK, +1);
+				}
 			}
 		}
 	}
@@ -354,6 +347,9 @@ public class AdvancedMiningPlugin extends Plugin
 				case "You find some minerals while you mine.":
 					session.updateOreFound(ItemID.UNIDENTIFIED_MINERALS, +1);
 					break;
+				case "You find a clue geode!":
+					session.updateOreFound(ItemID.CLUE_GEODE_BEGINNER, +1);
+					break;
 
 				case "You manage to mine some clay.":
 					session.updateOreFound(ItemID.CLAY, +1);
@@ -414,9 +410,10 @@ public class AdvancedMiningPlugin extends Plugin
 				case "You just mined a Diamond!":
 					session.updateOreFound(ItemID.UNCUT_DIAMOND, +1);
 					break;
-				/*case "You mined an extra block of essence thanks to your completion of the Kourend & Kebos Medium Diary.":
+
+				case "You mined an extra block of essence thanks to your completion of the Kourend & Kebos Medium Diary.":
 					session.updateOreFound(ItemID.DENSE_ESSENCE_BLOCK, +1);
-					break;*/
+					break;
 				}
 			}
 		}

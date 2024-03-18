@@ -8,8 +8,6 @@
 A plugin based on the original mining plugin that will display exactly what type of ores/gems you have mined & what quantity.<br>
 It also displays any minerals that you have managed to collect.
 
-### Turn off the original mining plugin, or it will display both at the same time.
-
 ![An image showing how many ores/gems that have been collected, including any minerals.](advanced-mining.png "Advanced Mining Image")<br>
 ![An image showing how many ores/gems that have been collected, including any minerals.](advanced-mining2.png "Advanced Mining Image")<br>
 ![An image showing the settings for the plugin](advanced-mining3.png "Advanced Mining Image")
@@ -36,9 +34,18 @@ It also displays any minerals that you have managed to collect.
 * Ruby
 * Diamond
 
+### Others Supported
+* Dense Essence (Needs a better way to add it)
+* Clue Geodes
+
 ### Updates
+v1.0.6<br>
+* Bug fix on Dense Essence and added back the support for it.
+* Added support for showing how many Clue Geodes you get per session.
+* Plugin now auto disables the original Mining plugin if it's turned on.
+
 v1.0.5<br>
-Temporarily removed Dense Essence until fixed properly as is was showing up no matter what you mined.
+Temporarily removed Dense Essence until fixed properly as it was showing up no matter what you mined.
 
 v1.0.4<br>
 * Added support for Dense Essence (needs a better method for adding it to the display).

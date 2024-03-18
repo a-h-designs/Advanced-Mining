@@ -46,6 +46,7 @@ class AdvancedMiningOverlay extends OverlayPanel
         MiningSession session = plugin.getSession();
 
         int mineralsFound = session.getMineralsFound();
+        int geodeFound = session.getGeodeFound();
 
         int clayFound = session.getClayFound();
         int copperFound = session.getCopperFound();
@@ -69,13 +70,13 @@ class AdvancedMiningOverlay extends OverlayPanel
 
         int runeessFound = session.getRuneessFound();
         int pureessFound = session.getPureessFound();
-        /*int denseessFound = session.getDenseessFound();*/
+        int denseessFound = session.getDenseessFound();
 
-        if (mineralsFound == 0 && clayFound == 0 && copperFound == 0 && tinFound == 0 && ironFound == 0 &&
+        if (mineralsFound == 0 && geodeFound == 0 && clayFound == 0 && copperFound == 0 && tinFound == 0 && ironFound == 0 &&
                 silverFound == 0 && coalFound == 0 && goldFound == 0 && mithrilFound == 0 && adamantiteFound == 0 &&
                 runiteFound == 0 && amethystFound == 0 && opalsFound == 0 && jadesFound == 0 && topazsFound == 0 &&
                 sapphiresFound == 0 && emeraldsFound == 0 && rubiesFound == 0 && diamondsFound == 0 &&
-                runeessFound == 0 && pureessFound == 0/* || denseessFound == 0*/)
+                runeessFound == 0 && pureessFound == 0 && denseessFound == 0)
         {
             return null;
         }
@@ -130,6 +131,13 @@ class AdvancedMiningOverlay extends OverlayPanel
                 panelComponent.getChildren().add(LineComponent.builder()
                         .left("Minerals:")
                         .right(Integer.toString(mineralsFound))
+                        .build());
+            }
+            if (geodeFound > 0)
+            {
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Clue Geodes:")
+                        .right(Integer.toString(geodeFound))
                         .build());
             }
             if (clayFound > 0 || copperFound > 0 || tinFound > 0 || ironFound > 0 || silverFound > 0 || coalFound > 0 ||
@@ -274,7 +282,7 @@ class AdvancedMiningOverlay extends OverlayPanel
                         .right(Integer.toString(diamondsFound))
                         .build());
             }
-            if (runeessFound > 0 || pureessFound > 0/* || denseessFound > 0*/)
+            if (runeessFound > 0 || pureessFound > 0 || denseessFound > 0)
             {
                 panelComponent.getChildren().add(TitleComponent.builder()
                         .text("Essence")
@@ -295,13 +303,13 @@ class AdvancedMiningOverlay extends OverlayPanel
                         .right(Integer.toString(pureessFound))
                         .build());
             }
-            /*if (denseessFound > 0)
+            if (denseessFound > 0)
             {
                 panelComponent.getChildren().add(LineComponent.builder()
                         .left("Dense:")
                         .right(Integer.toString(denseessFound))
                         .build());
-            }*/
+            }
         }
         else
         {
@@ -310,6 +318,10 @@ class AdvancedMiningOverlay extends OverlayPanel
             if (mineralsFound > 0)
             {
                 panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.UNIDENTIFIED_MINERALS, mineralsFound, true)));
+            }
+            if (geodeFound > 0)
+            {
+                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.CLUE_GEODE_BEGINNER, geodeFound, true)));
             }
             if (clayFound > 0)
             {
@@ -391,10 +403,10 @@ class AdvancedMiningOverlay extends OverlayPanel
             {
                 panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.PURE_ESSENCE, pureessFound, true)));
             }
-            /*if (denseessFound > 0)
+            if (denseessFound > 0)
             {
                 panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.DENSE_ESSENCE_BLOCK, denseessFound, true)));
-            }*/
+            }
         }
         return super.render(graphics);
     }
