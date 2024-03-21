@@ -35,10 +35,17 @@ It also displays any minerals that you have managed to collect.
 * Diamond
 
 ### Others Supported
+* Minerals
 * Dense Essence (Needs a better way to add it)
 * Clue Geodes
+* Blessed Bone Shards
+* Calcified Deposits
 
 ### Updates
+v1.0.7<br>
+Added basic support for Calcified rocks. It only shows 1 Blessed Bone Shards each time you mine and currently doesn't display Calcified Deposits<br>
+(Still needs working on to get it to work fully)
+
 v1.0.6<br>
 * Bug fix on Dense Essence and added back the support for it.
 * Added support for showing how many Clue Geodes you get per session.

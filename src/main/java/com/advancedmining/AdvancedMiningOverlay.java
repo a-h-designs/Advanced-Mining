@@ -143,9 +143,22 @@ class AdvancedMiningOverlay extends OverlayPanel
                         .right(Integer.toString(geodeFound))
                         .build());
             }
+            if (boneshardsFound > 0)
+            {
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Bone Shards:")
+                        .right(Integer.toString(boneshardsFound))
+                        .build());
+            }
+            if (calcifieddepositFound > 0)
+            {
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Calcified Deposit:")
+                        .right(Integer.toString(calcifieddepositFound))
+                        .build());
+            }
             if (clayFound > 0 || copperFound > 0 || tinFound > 0 || ironFound > 0 || silverFound > 0 || coalFound > 0 ||
-                    goldFound > 0 || boneshardsFound > 0 || calcifieddepositFound > 0 || mithrilFound > 0 ||
-                    adamantiteFound > 0 || runiteFound > 0 || amethystFound > 0)
+                    goldFound > 0 || mithrilFound > 0 || adamantiteFound > 0 || runiteFound > 0 || amethystFound > 0)
             {
                 panelComponent.getChildren().add(TitleComponent.builder()
                         .text("Ores")
@@ -199,20 +212,6 @@ class AdvancedMiningOverlay extends OverlayPanel
                 panelComponent.getChildren().add(LineComponent.builder()
                         .left("Gold:")
                         .right(Integer.toString(goldFound))
-                        .build());
-            }
-            if (boneshardsFound > 0)
-            {
-                panelComponent.getChildren().add(LineComponent.builder()
-                        .left("Bone Shards:")
-                        .right(Integer.toString(boneshardsFound))
-                        .build());
-            }
-            if (calcifieddepositFound > 0)
-            {
-                panelComponent.getChildren().add(LineComponent.builder()
-                        .left("Calcified Deposit:")
-                        .right(Integer.toString(calcifieddepositFound))
                         .build());
             }
             if (mithrilFound > 0)
