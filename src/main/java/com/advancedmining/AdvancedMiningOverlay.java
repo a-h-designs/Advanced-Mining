@@ -55,6 +55,8 @@ class AdvancedMiningOverlay extends OverlayPanel
         int silverFound = session.getSilverFound();
         int coalFound = session.getCoalFound();
         int goldFound = session.getGoldFound();
+        int boneshardsFound = session.getBoneshardsFound();
+        int calcifieddepositFound = session.getCalcifieddepositFound();
         int mithrilFound = session.getMithrilFound();
         int adamantiteFound = session.getAdamantiteFound();
         int runiteFound = session.getRuniteFound();
@@ -72,11 +74,12 @@ class AdvancedMiningOverlay extends OverlayPanel
         int pureessFound = session.getPureessFound();
         int denseessFound = session.getDenseessFound();
 
-        if (mineralsFound == 0 && geodeFound == 0 && clayFound == 0 && copperFound == 0 && tinFound == 0 && ironFound == 0 &&
-                silverFound == 0 && coalFound == 0 && goldFound == 0 && mithrilFound == 0 && adamantiteFound == 0 &&
-                runiteFound == 0 && amethystFound == 0 && opalsFound == 0 && jadesFound == 0 && topazsFound == 0 &&
-                sapphiresFound == 0 && emeraldsFound == 0 && rubiesFound == 0 && diamondsFound == 0 &&
-                runeessFound == 0 && pureessFound == 0 && denseessFound == 0)
+        if (mineralsFound == 0 && geodeFound == 0 && clayFound == 0 && copperFound == 0 && tinFound == 0 &&
+                ironFound == 0 && silverFound == 0 && coalFound == 0 && goldFound == 0 && boneshardsFound == 0 &&
+                calcifieddepositFound == 0 && mithrilFound == 0 && adamantiteFound == 0 && runiteFound == 0 &&
+                amethystFound == 0 && opalsFound == 0 && jadesFound == 0 && topazsFound == 0 && sapphiresFound == 0 &&
+                emeraldsFound == 0 && rubiesFound == 0 && diamondsFound == 0 && runeessFound == 0 &&
+                pureessFound == 0 && denseessFound == 0)
         {
             return null;
         }
@@ -141,7 +144,8 @@ class AdvancedMiningOverlay extends OverlayPanel
                         .build());
             }
             if (clayFound > 0 || copperFound > 0 || tinFound > 0 || ironFound > 0 || silverFound > 0 || coalFound > 0 ||
-                    goldFound > 0 || mithrilFound > 0 || adamantiteFound > 0 || runiteFound > 0 || amethystFound > 0)
+                    goldFound > 0 || boneshardsFound > 0 || calcifieddepositFound > 0 || mithrilFound > 0 ||
+                    adamantiteFound > 0 || runiteFound > 0 || amethystFound > 0)
             {
                 panelComponent.getChildren().add(TitleComponent.builder()
                         .text("Ores")
@@ -195,6 +199,20 @@ class AdvancedMiningOverlay extends OverlayPanel
                 panelComponent.getChildren().add(LineComponent.builder()
                         .left("Gold:")
                         .right(Integer.toString(goldFound))
+                        .build());
+            }
+            if (boneshardsFound > 0)
+            {
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Bone Shards:")
+                        .right(Integer.toString(boneshardsFound))
+                        .build());
+            }
+            if (calcifieddepositFound > 0)
+            {
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Calcified Deposit:")
+                        .right(Integer.toString(calcifieddepositFound))
                         .build());
             }
             if (mithrilFound > 0)
@@ -350,6 +368,14 @@ class AdvancedMiningOverlay extends OverlayPanel
             if (goldFound > 0)
             {
                 panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.GOLD_ORE, goldFound, true)));
+            }
+            if (boneshardsFound > 0)
+            {
+                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.BLESSED_BONE_SHARDS, boneshardsFound, true)));
+            }
+            if (calcifieddepositFound > 0)
+            {
+                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.CALCIFIED_DEPOSIT, calcifieddepositFound, true)));
             }
             if (mithrilFound > 0)
             {

@@ -40,6 +40,12 @@ class MiningSession
     private int goldFound;
 
     @Getter(AccessLevel.PACKAGE)
+    private int boneshardsFound;
+
+    @Getter(AccessLevel.PACKAGE)
+    private int calcifieddepositFound;
+
+    @Getter(AccessLevel.PACKAGE)
     private int mithrilFound;
 
     @Getter(AccessLevel.PACKAGE)
@@ -114,6 +120,12 @@ class MiningSession
                 break;
             case ItemID.GOLD_ORE:
                 goldFound += count;
+                break;
+            case ItemID.BLESSED_BONE_SHARDS:
+                boneshardsFound += count;
+                break;
+            case ItemID.CALCIFIED_DEPOSIT:
+                calcifieddepositFound += count;
                 break;
             case ItemID.MITHRIL_ORE:
                 mithrilFound += count;

@@ -38,9 +38,9 @@ public class AdvancedMiningPlugin extends Plugin
 	public static final Pattern MINING_PATTERN = Pattern.compile(
 			"You " +
 					"(?:manage to|just|find|mined)" +
-					" (?:mined?|quarry|some|found|an?) " +
-					"(?:some|an?|minerals|extra|clue) " +
-					"(?:while you mine|copper|tin|clay|iron|silver|coal|gold|mithril|adamantite|runite|amethyst|sandstone|granite|barronite shards|barronite deposit|Opal|piece of Jade|Red Topaz|Emerald|Sapphire|Ruby|Diamond|block of essence thanks to your completion of the Kourend & Kebos Medium Diary|geode)" +
+					" (?:mined?|quarry|some|found|an?|chip off|mine) " +
+					"(?:some|an?|minerals|extra|clue|a) " +
+					"(?:while you mine|copper|tin|clay|iron|silver|coal|gold|bone shards|calcified deposit|mithril|adamantite|runite|amethyst|sandstone|granite|barronite shards|barronite deposit|Opal|piece of Jade|Red Topaz|Emerald|Sapphire|Ruby|Diamond|block of essence thanks to your completion of the Kourend & Kebos Medium Diary|geode)" +
 					"(?:\\.|!)");
 
 	@Inject
@@ -57,6 +57,10 @@ public class AdvancedMiningPlugin extends Plugin
 
 	@Inject
 	private AdvancedMiningConfig config;
+
+	private int previousAmount;
+	private int newInventoryAmount;
+    private int newAmount;
 
 	@Getter
 	@Nullable
@@ -118,6 +122,13 @@ public class AdvancedMiningPlugin extends Plugin
 				// so wait for the next game tick before watching for
 				// rocks to deplete
 				recentlyLoggedIn = true;
+				/*final ItemContainer itemContainer = client.getItemContainer(InventoryID.INVENTORY);
+				final Item[] items = itemContainer.getItems();
+					for (Item i : items) {
+						if (i.getId() == ItemID.BLESSED_BONE_SHARDS) {
+							previousAmount = i.getQuantity();
+						}
+					}*/
 				break;
 		}
 	}
@@ -325,11 +336,30 @@ public class AdvancedMiningPlugin extends Plugin
 		}
 	}
 
+/*	@Subscribe
+	public void onItemContainerChanged(ItemContainerChanged event) {
+		if (event.getItemContainer() == client.getItemContainer(InventoryID.INVENTORY)) {
+			Item[] items = event.getItemContainer().getItems();
+			for (Item i : items) {
+                if (i.getId() == ItemID.BLESSED_BONE_SHARDS) {
+                    newInventoryAmount = i.getQuantity();
+                }
+			}
+		}
+	}
+
+	private void checkAmount() {
+		previousAmount = newInventoryAmount - 1;
+		//newAmount = newInventoryAmount - previousAmount;
+		//newInventoryAmount = newAmount;
+		newAmount = newInventoryAmount - previousAmount;
+		previousAmount = newAmount;
+	}*/
+
 	@Subscribe
 	public void onChatMessage(ChatMessage event)
 	{
 		String chatMessage = event.getMessage();
-
 
 		if (event.getType() == ChatMessageType.SPAM || event.getType() == ChatMessageType.GAMEMESSAGE)
 		{
@@ -371,6 +401,13 @@ public class AdvancedMiningPlugin extends Plugin
 					break;
 				case "You manage to mine some gold.":
 					session.updateOreFound(ItemID.GOLD_ORE, +1);
+					break;
+				case "You manage to chip off some bone shards.":
+					//checkAmount();
+					session.updateOreFound(ItemID.BLESSED_BONE_SHARDS, +1);
+					break;
+				case "You manage to mine a calcified deposit":
+					session.updateOreFound(ItemID.CALCIFIED_DEPOSIT, +1);
 					break;
 				case "You manage to mine some mithril.":
 					session.updateOreFound(ItemID.MITHRIL_ORE, +1);
