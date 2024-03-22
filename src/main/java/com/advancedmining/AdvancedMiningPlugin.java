@@ -122,13 +122,6 @@ public class AdvancedMiningPlugin extends Plugin
 				// so wait for the next game tick before watching for
 				// rocks to deplete
 				recentlyLoggedIn = true;
-				/*final ItemContainer itemContainer = client.getItemContainer(InventoryID.INVENTORY);
-				final Item[] items = itemContainer.getItems();
-					for (Item i : items) {
-						if (i.getId() == ItemID.BLESSED_BONE_SHARDS) {
-							previousAmount = i.getQuantity();
-						}
-					}*/
 				break;
 		}
 	}
@@ -172,6 +165,16 @@ public class AdvancedMiningPlugin extends Plugin
 	@Subscribe
 	public void onGameTick(GameTick gameTick)
 	{
+		if (recentlyLoggedIn) {
+				final ItemContainer itemContainer = client.getItemContainer(InventoryID.INVENTORY);
+				final Item[] items = itemContainer.getItems();
+					for (Item i : items) {
+						if (i.getId() == ItemID.BLESSED_BONE_SHARDS) {
+							previousAmount = i.getQuantity();
+							recentlyLoggedIn = false;
+						}
+					}
+		}
 		clearExpiredRespawns();
 		recentlyLoggedIn = false;
 
@@ -336,7 +339,7 @@ public class AdvancedMiningPlugin extends Plugin
 		}
 	}
 
-/*	@Subscribe
+	@Subscribe
 	public void onItemContainerChanged(ItemContainerChanged event) {
 		if (event.getItemContainer() == client.getItemContainer(InventoryID.INVENTORY)) {
 			Item[] items = event.getItemContainer().getItems();
@@ -349,12 +352,11 @@ public class AdvancedMiningPlugin extends Plugin
 	}
 
 	private void checkAmount() {
-		previousAmount = newInventoryAmount - 1;
-		//newAmount = newInventoryAmount - previousAmount;
-		//newInventoryAmount = newAmount;
 		newAmount = newInventoryAmount - previousAmount;
-		previousAmount = newAmount;
-	}*/
+
+		previousAmount = newInventoryAmount;
+
+	}
 
 	@Subscribe
 	public void onChatMessage(ChatMessage event)
@@ -403,10 +405,10 @@ public class AdvancedMiningPlugin extends Plugin
 					session.updateOreFound(ItemID.GOLD_ORE, +1);
 					break;
 				case "You manage to chip off some bone shards.":
-					//checkAmount();
-					session.updateOreFound(ItemID.BLESSED_BONE_SHARDS, +1);
+					checkAmount();
+					session.updateOreFound(ItemID.BLESSED_BONE_SHARDS, newAmount);
 					break;
-				case "You manage to mine a calcified deposit":
+				case "You manage to mine a calcified deposit.":
 					session.updateOreFound(ItemID.CALCIFIED_DEPOSIT, +1);
 					break;
 				case "You manage to mine some mithril.":

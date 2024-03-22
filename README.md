@@ -43,8 +43,8 @@ It also displays any minerals that you have managed to collect.
 
 ### Updates
 v1.0.7<br>
-Added basic support for Calcified rocks. It only shows 1 Blessed Bone Shards each time you mine and currently doesn't display Calcified Deposits<br>
-(Still needs working on to get it to work fully)
+* Added Blessed Bone Shards
+* Added Calcified Deposits
 
 v1.0.6<br>
 * Bug fix on Dense Essence and added back the support for it.
