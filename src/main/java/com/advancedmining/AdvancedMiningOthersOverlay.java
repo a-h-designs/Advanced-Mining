@@ -115,6 +115,14 @@ public class AdvancedMiningOthersOverlay extends OverlayPanel {
                         .left("Bone Shards:")
                         .right(Integer.toString(boneshardsFound))
                         .build());
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Prayer Xp (blessed):")
+                        .right(Integer.toString(boneshardsFound * 5))
+                        .build());
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Prayer Xp (blessed sunfire):")
+                        .right(Integer.toString(boneshardsFound * 6))
+                        .build());
             }
             if (calcifieddepositFound > 0) {
                 panelComponent.getChildren().add(LineComponent.builder()
