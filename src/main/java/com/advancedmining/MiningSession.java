@@ -24,6 +24,8 @@ class MiningSession {
     @Getter(AccessLevel.PACKAGE)
     private int stardustFound;
     @Getter(AccessLevel.PACKAGE)
+    private int volcanicashFound;
+    @Getter(AccessLevel.PACKAGE)
     private int boneshardsFound;
     @Getter(AccessLevel.PACKAGE)
     private int calcifieddepositFound;
@@ -48,8 +50,6 @@ class MiningSession {
     private int ironFound;
     @Getter(AccessLevel.PACKAGE)
     private int silverFound;
-    @Getter(AccessLevel.PACKAGE)
-    private int volcanicashFound;
     @Getter(AccessLevel.PACKAGE)
     private int coalFound;
     @Getter(AccessLevel.PACKAGE)
@@ -94,6 +94,9 @@ class MiningSession {
     @Getter(AccessLevel.PACKAGE)
     private int denseessFound;
 
+    @Getter(AccessLevel.PACKAGE)
+    private int smashing;
+
     private Logger log;
 
     void updateOthersMined (int itemID, int count) {
@@ -104,6 +107,9 @@ class MiningSession {
                 break;
             case ItemID.STARDUST:
                 stardustFound += count;
+                break;
+            case ItemID.VOLCANIC_ASH:
+                volcanicashFound += count;
                 break;
             case ItemID.BARRONITE_SHARDS:
                 barroniteshardsFound += count;
@@ -119,6 +125,9 @@ class MiningSession {
                 break;
             case ItemID.CLUE_GEODE_BEGINNER:
                 geodeFound += count;
+                break;
+            case ItemID.DRAGON_PICKAXE_12797:
+                smashing += count;
                 break;
             default:
                 log.debug("Invalid others specified. The others count will not be updated.");
@@ -147,9 +156,6 @@ class MiningSession {
                 break;
             case ItemID.SILVER_ORE:
                 silverFound += count;
-                break;
-            case ItemID.VOLCANIC_ASH:
-                volcanicashFound += count;
                 break;
             case ItemID.COAL:
                 coalFound += count;
@@ -233,6 +239,19 @@ class MiningSession {
                 break;
             default:
                 log.debug("Invalid gem type specified. The gem count will not be incremented.");
+        }
+    }
+
+    void incrementpublicChat(int itemID) {
+        switch(itemID) {
+            case ItemID.DRAGON_PICKAXE_12797:
+                smashing++;
+                break;
+            case ItemID._3RD_AGE_AXE:
+                diamondsFound++;
+                break;
+            default:
+                log.debug("Invalid item type Specified. The count will not be incremented.");
         }
     }
 

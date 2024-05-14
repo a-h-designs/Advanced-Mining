@@ -44,6 +44,10 @@ It also displays any minerals that you have managed to collect.
 * Clue Geodes
 
 ### Updates
+v.1.0.9<br>
+* Some general bug fixes
+* Added potential Prayer XP gained for mining Blessed Bone Shards.
+
 v1.0.8<br>
 * Added Barronite Shards & Deposits
 * Changed the look slightly and given an option to turn of different things mined (see last picture above).

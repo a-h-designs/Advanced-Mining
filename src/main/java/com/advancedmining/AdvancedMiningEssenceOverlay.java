@@ -39,9 +39,9 @@ public class AdvancedMiningEssenceOverlay extends OverlayPanel {
             return null;
         }
 
-        int runeessFound = session.getRuneessFound();
-        int pureessFound = session.getPureessFound();
-        int denseessFound = session.getDenseessFound();
+        int runeessFound = session != null ? session.getRuneessFound() : 0;
+        int pureessFound = session != null ? session.getPureessFound() : 0;
+        int denseessFound = session != null ? session.getDenseessFound() : 0;
 
         if (runeessFound == 0 && pureessFound == 0 && denseessFound == 0) {
             return null;

@@ -38,17 +38,17 @@ public class AdvancedMiningOresOverlay extends OverlayPanel {
             return null;
         }
 
-        int clayFound = session.getClayFound();
-        int copperFound = session.getCopperFound();
-        int tinFound = session.getTinFound();
-        int ironFound = session.getIronFound();
-        int silverFound = session.getSilverFound();
-        int coalFound = session.getCoalFound();
-        int goldFound = session.getGoldFound();
-        int mithrilFound = session.getMithrilFound();
-        int adamantiteFound = session.getAdamantiteFound();
-        int runiteFound = session.getRuniteFound();
-        int amethystFound = session.getAmethystFound();
+        int clayFound = session != null ? session.getClayFound() : 0;
+        int copperFound = session != null ? session.getCopperFound() : 0;
+        int tinFound = session != null ? session.getTinFound() : 0;
+        int ironFound = session != null ? session.getIronFound() : 0;
+        int silverFound = session != null ? session.getSilverFound() : 0;
+        int coalFound = session != null ? session.getCoalFound() : 0;
+        int goldFound = session != null ? session.getGoldFound() : 0;
+        int mithrilFound = session != null ? session.getMithrilFound() : 0;
+        int adamantiteFound = session != null ? session.getAdamantiteFound() : 0;
+        int runiteFound = session != null ? session.getRuniteFound() : 0;
+        int amethystFound = session != null ? session.getAmethystFound() : 0;
 
         if (clayFound == 0 && copperFound == 0 && tinFound == 0 && ironFound == 0 && silverFound == 0 &&
                 coalFound == 0 && goldFound == 0 && mithrilFound == 0 && adamantiteFound == 0 && runiteFound == 0 &&

@@ -36,7 +36,7 @@ public class AdvancedMiningOthersOverlay extends OverlayPanel {
     public Dimension render(Graphics2D graphics) {
         MiningSession session = plugin.getSession();
 
-        if (session.getLastOthersMined() == null || !config.showOthersMined()) {
+        if ((session != null ? session.getLastOthersMined() : null) == null || !config.showOthersMined()) {
             return null;
         }
 
@@ -56,8 +56,10 @@ public class AdvancedMiningOthersOverlay extends OverlayPanel {
         int calcifieddepositFound = session.getCalcifieddepositFound();
         int geodeFound = session.getGeodeFound();
 
+        int smashingFound = session.getSmashing();
+
         if (mineralsFound == 0 && stardustFound == 0 && barroniteshardsFound == 0 && barronitedepositFound == 0 &&
-                boneshardsFound == 0 && calcifieddepositFound == 0 && geodeFound == 0) {
+                boneshardsFound == 0 && calcifieddepositFound == 0 && geodeFound == 0 && smashingFound == 0) {
             return null;
         }
 
@@ -84,6 +86,9 @@ public class AdvancedMiningOthersOverlay extends OverlayPanel {
             if (geodeFound > 0) {
                 panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.CLUE_GEODE_BEGINNER, geodeFound, true)));
             }
+            /*if (smashingFound > 0) {
+                panelComponent.getChildren().add(new ImageComponent(itemManager.getImage(ItemID.DRAGON_PICKAXE_12797, smashingFound, true)));
+            }*/
         } else {
             panelComponent.setOrientation(ComponentOrientation.VERTICAL);
             if (mineralsFound > 0) {
@@ -128,6 +133,12 @@ public class AdvancedMiningOthersOverlay extends OverlayPanel {
                         .right(Integer.toString(geodeFound))
                         .build());
             }
+            /*if (smashingFound > 0) {
+                panelComponent.getChildren().add(LineComponent.builder()
+                        .left("Smashing:")
+                        .right(Integer.toString(smashingFound))
+                        .build());
+            }*/
         }
         return super.render(graphics);
     }

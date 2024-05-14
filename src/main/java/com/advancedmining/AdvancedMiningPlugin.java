@@ -73,6 +73,9 @@ public class AdvancedMiningPlugin extends Plugin {
 	private AdvancedMiningEssenceOverlay advancedMiningEssenceOverlay;
 
 	@Inject
+	private AdvancedMiningPrayerOverlay advancedMiningPrayerOverlay;
+
+	@Inject
 	private MiningRocksOverlay rocksOverlay;
 
 	@Inject
@@ -108,6 +111,7 @@ public class AdvancedMiningPlugin extends Plugin {
 		overlayManager.add(advancedMiningAdditionalOverlay);
 		overlayManager.add(advancedMiningGemsOverlay);
 		overlayManager.add(advancedMiningEssenceOverlay);
+		overlayManager.add(advancedMiningPrayerOverlay);
 		overlayManager.add(rocksOverlay);
 	}
 
@@ -121,6 +125,7 @@ public class AdvancedMiningPlugin extends Plugin {
 		overlayManager.remove(advancedMiningAdditionalOverlay);
 		overlayManager.remove(advancedMiningGemsOverlay);
 		overlayManager.remove(advancedMiningEssenceOverlay);
+		overlayManager.remove(advancedMiningPrayerOverlay);
 		overlayManager.remove(rocksOverlay);
 		respawns.forEach(respawn -> clearHintArrowAt(respawn.getWorldPoint()));
 		respawns.clear();
@@ -384,6 +389,12 @@ public class AdvancedMiningPlugin extends Plugin {
 	public void onChatMessage(ChatMessage event) {
 		String chatMessage = event.getMessage();
 
+        if (event.getType() == ChatMessageType.PUBLICCHAT) {
+            if (chatMessage.equals("Smashing!")) {
+				session.updateOthersMined(ItemID.DRAGON_PICKAXE_12797, +1);
+            }
+        }
+
 		if (event.getType() == ChatMessageType.SPAM || event.getType() == ChatMessageType.GAMEMESSAGE) {
 			if (KOUREND_PATTERN.matcher(event.getMessage()).matches()) {
 				session.updateOreFound(SpriteID.QUESTS_PAGE_ICON_GREEN_ACHIEVEMENT_DIARIES, +1);
@@ -393,6 +404,7 @@ public class AdvancedMiningPlugin extends Plugin {
 					session = new MiningSession();
 				}
 				session.setLastMined();
+				//int miningSKILL
 				if (!isInMLMRegion()) {
 					switch (chatMessage) {
 						case "You find some minerals while you mine.":
@@ -401,6 +413,9 @@ public class AdvancedMiningPlugin extends Plugin {
 						case "You swing your pick at the star.":
 							checkAmount();
 							break;
+						case "You manage to mine some volcanic ash.":
+							//if ()
+
 						case "You manage to mine some barronite shards.":
 							checkAmount();
 							session.updateOthersMined(ItemID.BARRONITE_SHARDS, newAmount);

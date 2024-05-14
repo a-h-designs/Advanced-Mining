@@ -37,7 +37,7 @@ public class AdvancedMiningAdditionalOverlay extends OverlayPanel {
     public Dimension render(Graphics2D graphics) {
         MiningSession session = plugin.getSession();
 
-        if (session.getLastAdditionalMined() == null || !config.showAdditionalMined()) {
+        if ((session != null ? session.getLastAdditionalMined() : null) == null || !config.showAdditionalMined()) {
             return null;
         }
 

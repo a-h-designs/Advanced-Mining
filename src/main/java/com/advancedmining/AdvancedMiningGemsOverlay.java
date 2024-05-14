@@ -37,7 +37,7 @@ public class AdvancedMiningGemsOverlay extends OverlayPanel {
     public Dimension render(Graphics2D graphics) {
         MiningSession session = plugin.getSession();
 
-        if (session.getLastGemFound() == null || !config.showGemsFound()) {
+        if ((session != null ? session.getLastGemFound() : null) == null || !config.showGemsFound()) {
             return null;
         }
 

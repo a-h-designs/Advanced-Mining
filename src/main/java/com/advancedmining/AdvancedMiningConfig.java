@@ -97,6 +97,17 @@ public interface AdvancedMiningConfig extends Config {
 	}
 
 	@ConfigItem(
+			keyName = "showPrayerXp",
+			name = "Show Prayer Experience",
+			description = "Shows potential prayer xp from mining Calcified Rocks",
+			position = 8
+	)
+	default boolean showPrayerXp()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 			keyName = "showLootIcons",
 			name = "Show Icons",
 			description = "Display collected ores/gems/others as item images",
