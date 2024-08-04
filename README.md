@@ -44,6 +44,9 @@ It also displays any minerals that you have managed to collect.
 * Clue Geodes
 
 ### Updates
+v.1.0.10<br>
+Bug fix where script was showing up in MLM, now it shouldn't show.
+
 v.1.0.9<br>
 * Some general bug fixes
 * Added potential Prayer XP gained for mining Blessed Bone Shards.
@@ -57,14 +60,14 @@ v1.0.7<br>
 * Added Calcified Deposits.
 * Added respawn timers for Calcified Rocks.
 
+<details>
+
+<summary>Older Updates</summary>
+
 v1.0.6<br>
 * Bug fix on Dense Essence and added back the support for it.
 * Added support for showing how many Clue Geodes you get per session.
 * Plugin now auto disables the original Mining plugin if it's turned on.
-
-<details>
-
-<summary>Older Updates</summary>
 
 v1.0.5<br>
 Temporarily removed Dense Essence until fixed properly as it was showing up no matter what you mined.
@@ -72,7 +75,8 @@ Temporarily removed Dense Essence until fixed properly as it was showing up no m
 v1.0.4<br>
 * Added support for Dense Essence (needs a better method for adding it to the display).
 * Updated the icon.
-v1.0.3
+
+v1.0.3<br>
 * Given the option to just display the ore/gem icons instead on any text.
 * Added Clay, Copper & Tin.
 
