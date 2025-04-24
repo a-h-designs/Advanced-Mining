@@ -1,8 +1,7 @@
 # Advanced Mining
 
-[![Total Installs](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/installs/plugin/advanced-mining)](https://runelite.net/plugin-hub/show/advanced-mining)
-[![Plugin Rank](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/rank/plugin/advanced-mining)](https://runelite.net/plugin-hub/show/advanced-mining)
-[![Author Rank](https://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/rank/author/TroJaNSniPeR85)](https://runelite.net/plugin-hub/TroJaNSniPeR85)
+[![Total Installs](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/installs/plugin/advanced-mining)](https://runelite.net/plugin-hub/show/advanced-mining)
+[![Plugin Rank](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/rank/plugin/advanced-mining)](https://runelite.net/plugin-hub/show/advanced-mining)
 [![Licence](https://img.shields.io/github/license/a-h-designs/Advanced-Mining?style=flat&color=%23107FF6)](https://github.com/a-h-designs/Advanced-Mining#BSD-2-Clause-1-ov-file)
 
 A plugin based on the original mining plugin that will display exactly what type of ores/gems you have mined & what quantity.<br>
