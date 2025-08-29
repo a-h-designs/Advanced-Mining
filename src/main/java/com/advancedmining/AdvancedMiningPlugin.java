@@ -206,22 +206,24 @@ public class AdvancedMiningPlugin extends Plugin {
 	@Subscribe
 	public void onGameTick(GameTick gameTick) {
 		if (recentlyLoggedIn) {
-				final ItemContainer itemContainer = client.getItemContainer(InventoryID.INVENTORY);
+			final ItemContainer itemContainer = client.getItemContainer(InventoryID.INVENTORY);
+			if (itemContainer != null) {
 				final Item[] items = itemContainer.getItems();
-					for (Item i : items) {
-						if (i.getId() == ItemID.BLESSED_BONE_SHARDS) {
-							previousAmount = i.getQuantity();
-							recentlyLoggedIn = false;
-						}
-						if (i.getId() == ItemID.STARDUST) {
-							previousAmount = i.getQuantity();
-							recentlyLoggedIn = false;
-						}
-						if (i.getId() == ItemID.BARRONITE_SHARDS) {
-							previousAmount = i.getQuantity();
-							recentlyLoggedIn = false;
-						}
+				for (Item i : items) {
+					if (i.getId() == ItemID.BLESSED_BONE_SHARDS) {
+						previousAmount = i.getQuantity();
+						recentlyLoggedIn = false;
 					}
+					if (i.getId() == ItemID.STARDUST) {
+						previousAmount = i.getQuantity();
+						recentlyLoggedIn = false;
+					}
+					if (i.getId() == ItemID.BARRONITE_SHARDS) {
+						previousAmount = i.getQuantity();
+						recentlyLoggedIn = false;
+					}
+				}
+			}
 		}
 		clearExpiredRespawns();
 		recentlyLoggedIn = false;
